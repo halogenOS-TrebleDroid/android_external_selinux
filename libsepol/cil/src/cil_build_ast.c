@@ -186,7 +186,6 @@ int cil_add_decl_to_symtab(struct cil_db *db, symtab_t *symtab, hashtab_key_t ke
 		/* multiple_decls is enabled and works for this datum type, add node */
 		cil_list_append(prev->nodes, CIL_NODE, node);
 		node->data = prev;
-		return SEPOL_EEXIST;
 	}
 
 	return SEPOL_OK;
