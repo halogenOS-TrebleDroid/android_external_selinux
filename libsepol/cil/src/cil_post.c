@@ -509,6 +509,15 @@ static int cil_post_genfscon_context_compare(const void *a, const void *b)
 		 */
 		if(strcmp(a_genfscon->path_str, "/devices/virtual/block/") == 0)
 			bypass = 1;
+        /*
+         * This conflict has been seen on Freebox Player Pop
+         * - AOSP T says (genfscon proc "/sys/vm/watermark_scale_factor" (u object_r proc_watermark_scale_factor ((s0) (s0))))
+         * - stock rom says proc_vm_writable
+         *
+         * Stock ROM uses it only in recovery so it's safe to ignore
+         */
+		if(strcmp(a_genfscon->path_str, "/sys/vm/watermark_scale_factor") == 0)
+			bypass = 1;
 		if(strcmp(a_genfscon->fs_str, "exfat") == 0 || strcmp(a_genfscon->fs_str, "esdfs") == 0) {
             if(strcmp(a_genfscon->path_str, "/") == 0)
                 bypass = 1;
