@@ -518,7 +518,7 @@ static int cil_post_genfscon_context_compare(const void *a, const void *b)
          */
 		if(strcmp(a_genfscon->path_str, "/sys/vm/watermark_scale_factor") == 0)
 			bypass = 1;
-		if(strcmp(a_genfscon->fs_str, "exfat") == 0 || strcmp(a_genfscon->fs_str, "esdfs") == 0) {
+		if(strcmp(a_genfscon->fs_str, "exfat") == 0 || strcmp(a_genfscon->fs_str, "esdfs") == 0 || strcmp(a_genfscon->fs_str, "fuseblk") == 0) {
             if(strcmp(a_genfscon->path_str, "/") == 0)
                 bypass = 1;
         }
