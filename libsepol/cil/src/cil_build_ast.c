@@ -250,6 +250,14 @@ int cil_gen_ordered(struct cil_db *db, struct cil_tree_node *parse_current, stru
 
 	int rc = SEPOL_ERR;
 
+        {
+            const char* path = cil_tree_get_cil_path(parse_current);
+            if(strstr(path, "vendor/")) {
+                cil_clear_node(ast_node);
+                return SEPOL_OK;
+            }
+        }
+
 	if (db == NULL || parse_current == NULL || ast_node == NULL) {
 		goto exit;
 	}
